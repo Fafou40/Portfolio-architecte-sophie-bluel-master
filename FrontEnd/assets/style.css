@@ -186,3 +186,25 @@ footer nav ul {
 	margin: 2em
 }
 
+/*boutons filtres*/
+.filter__btn:hover, .btn-admin:hover {
+	color: white;
+	background-color: #1D6154;
+	scale: 1.05;
+  }
+  
+  .admin__rod button:hover {
+	background-color: #1D6154;
+	color: white;
+  }
+  
+  .login__form input[type=submit]:hover {
+	color: #1D6154;
+	background-color: white;
+	scale: 1.05;
+  }
+  
+  .login a:hover {
+	color: #B1663C;
+  }
+  
