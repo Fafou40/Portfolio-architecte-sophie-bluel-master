@@ -8,18 +8,94 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
-	<link rel="stylesheet" href="./assets/style.css">
-
+	<link rel="stylesheet" href="./assets/style.css"> 
+	<script type="module" src="./script.js" defer></script> 
+	<script src="https://kit.fontawesome.com/73db696eb9.js" crossorigin="anonymous"></script>
 </head>
-<body>
+
+
+<!-- MODULE ADMIN -->
+<aside class="admin__rod admin__modifer" aria-hidden="true" style="display: none;">
+	<div class="admin__modifer">
+		<i class="fa-solid fa-pen-to-square"></i>
+		<p>Mode édition</p>
+	</div>
+	<a href="./login.html">
+		<button>Publier les changements</button>
+	</a>
+</aside>
+
+<aside id="modale" class="modale" aria-hidden="true" style="display: none;">
+	<div class="modale-wrapper js-modale-stop">
+		<a href="" class="js-modale-close">
+			<i class="fa-solid fa-xmark"></i>
+		</a>
+		<h2>Galerie photo</h2>
+		<div class="js-admin-projets">
+			<!-- generation des photos dynamiquement -->
+		</div>
+		<a href="#modaleProjet" class="js-modale-projet">Ajouter un projet</a>
+		<a class="btn-clear-admin" href="#">Supprimer la galerie</a>	
+	</div>
+</aside>
+
+<aside id="modaleProjet" class="modale-projet" aria-hidden="true"  style="display: none;">
+	<div class="modale-wrapper js-modale-stop">
+		<div class="modale-projet-logo">
+			<a href="" class="js-modale-return">
+				<i class="fa-solid fa-arrow-left"></i>
+			</a>
+			<a href="" class="js-modale-close">
+				<i class="fa-solid fa-xmark"></i>
+			</a>
+		</div>
+
+		<h2>Ajout d'un projet</h2>
+
+		<form class="modale-projet-form" action="" enctype="multipart/form-data">
+
+			<div class="form-group-photo">
+				<i class="fa-regular fa-image"></i>
+				<label for="photo">+ Ajouter une photo</label>
+				<input type="file" name="photo" id="photo" class="js-image">
+			</div>
+
+			<div class="form-group-title">
+				<label for="titre">Titre</label>
+				<input class="js-title" type="text" name="titre" id="titre">
+			</div>
+
+			<div class="form-group-id">
+				<label for="categorie">Catégorie</label>
+				<select name="categorie" id="categorie" class="js-categoryId">
+					<option value="1">Objets</option>
+					<option value="2">Appartements</option>
+					<option value="3">Hôtels & restaurants</option>
+				</select>
+			</div>
+
+			<input type="submit" class="js-add-work" value="Ajouter le projet">
+		</form>
+	</div>
+</aside>
+<!--  -->
+
 <header>
 	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 	<nav>
 		<ul>
-			<li>projets</li>
-			<li>contact</li>
-			<li>login</li>
-			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+			<a href="#portfolio">
+				<li>projets</li>
+			</a>
+			<a href="#contact">
+				<li>contact</li>
+			</a>
+			<a href="login.html">
+				<li class="js-alredy-logged">login</li>
+			</a>
+			<a href="https://www.instagram.com" target="_blank">
+				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+			</a>
 		</ul>
 	</nav>
 </header>
@@ -27,8 +103,16 @@
 	<section id="introduction">
 		<figure>
 			<img src="./assets/images/sophie-bluel.png" alt="">
+			<div class="admin__modifer" style="display: none;">
+				<i class="fa-solid fa-pen-to-square"></i>
+				<a href="#modale" class="js-modale">Modifier</a>
+			</div>
 		</figure>
 		<article>
+			<div class="admin__modifer" aria-hidden="true" style="display: none;">
+				<i class="fa-solid fa-pen-to-square"></i>
+				<a href="#modale" class="js-modale">Modifier</a>
+			</div>
 			<h2>Designer d'espace</h2>
 			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
 			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
@@ -36,8 +120,13 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<div id="sort-buttons"></div>
-		<h2>Mes Projets</h2>
+		<div class="portfolio-title">
+			<h2>Mes Projets</h2>
+			<div class="admin__modifer" aria-hidden="true" style="display: none;">
+				<i class="fa-solid fa-pen-to-square"></i>
+				<a href="#modale" class="js-modale">Modifier</a>
+			</div>
+		</div>
 		<div class="filters">
 			<button class="filter__btn filter__btn-id-null filter__btn--active">Tous</button>
 			<button class="filter__btn filter__btn-id-1">Objets</button>
@@ -45,7 +134,7 @@
 			<button class="filter__btn filter__btn-id-3">Hôtels & restaurants</button>
 		</div>
 		<div class="gallery">
-			<!--ici insertion dynamisue depuis swagger-->
+			<!-- Générer dynamiquement -->
 		</div>
 	</section>
 	<section id="contact">
@@ -70,6 +159,5 @@
 		</ul>
 	</nav>
 </footer>
-<script src="script.js"></script>
 </body>
 </html>
