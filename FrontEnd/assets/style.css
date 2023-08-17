@@ -1,17 +1,85 @@
 /* http://meyerweb.com/eric/tools/css/reset/ !!! v2.0 | 20110126 !!! License: none (public domain) */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -21,7 +89,17 @@ time, mark, audio, video {
 }
 
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
   display: block;
 }
 
@@ -29,15 +107,20 @@ body {
   line-height: 1;
 }
 
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
 
-blockquote, q {
+blockquote,
+q {
   quotes: none;
 }
 
-blockquote:before, blockquote:after, q:before, q:after {
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
   content: "";
   content: none;
 }
@@ -70,7 +153,7 @@ h1 {
   color: #B1663C;
 }
 
-h1 > span {
+h1>span {
   font-family: "Work Sans";
   font-size: 10px;
   letter-spacing: 0.1em;
@@ -87,18 +170,18 @@ h2 {
   margin: 0 25px 0 0;
 }
 
-nav ul {
+nav {
   display: flex;
   align-items: center;
   list-style-type: none;
 }
 
-nav li {
+nav p {
   padding: 0 10px;
   font-size: 1.2em;
 }
 
-li:hover {
+p:hover {
   color: #B1663C;
 }
 
@@ -149,7 +232,7 @@ article .admin__modifer {
   width: 100%;
   height: 92.5%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 figcaption {
@@ -169,18 +252,20 @@ figure {
   height: auto;
 }
 
-/* TYPO */ /* ANIM */
+/* TYPO */
+/* ANIM */
 html {
   scroll-behavior: smooth;
 }
 
-.filter__btn:hover, .btn-admin:hover {
+.filter__btn:hover,
+.btn-admin:hover {
   color: white;
   background-color: #1D6154;
   scale: 1.05;
 }
 
-.admin__rod button:hover {
+.admin__rod a:hover {
   background-color: #1D6154;
   color: white;
 }
@@ -208,34 +293,42 @@ html {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
 }
+
 @keyframes slideFromTop {
   from {
     transform: translateY(-75px);
   }
+
   to {
     transform: translateY(0px);
   }
 }
+
 @keyframes fadeOff {
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
   }
 }
+
 @keyframes slideFromBottom {
   from {
     transform: translateY(0px);
   }
+
   to {
     transform: translateY(75px);
   }
 }
+
 .modale .js-modale-projet:hover {
   color: #1D6154;
   background-color: white;
@@ -251,34 +344,42 @@ html {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
 }
+
 @keyframes slideFromTop {
   from {
     transform: translateY(-75px);
   }
+
   to {
     transform: translateY(0px);
   }
 }
+
 @keyframes fadeOff {
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
   }
 }
+
 @keyframes slideFromBottom {
   from {
     transform: translateY(0px);
   }
+
   to {
     transform: translateY(75px);
   }
 }
+
 .form-group-photo label:hover {
   background-color: #306685;
   color: white;
@@ -305,7 +406,7 @@ html {
   background-color: black;
 }
 
-.admin__rod button {
+.admin__rod a {
   font-family: "work sans";
   font-weight: 550;
   background-color: white;
@@ -319,7 +420,7 @@ html {
 .admin__modifer {
   display: flex;
   -moz-column-gap: 5px;
-       column-gap: 5px;
+  column-gap: 5px;
   color: black;
 }
 
@@ -411,11 +512,12 @@ html {
   width: 95px;
   height: 120px;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   margin-bottom: 5px;
 }
 
-.fa-trash-alt:before, .fa-trash-can:before {
+.fa-trash-alt:before,
+.fa-trash-can:before {
   /* position: relative; */
   color: white;
   background-color: black;
@@ -479,7 +581,7 @@ html {
   margin: auto;
 }
 
-#contact > * {
+#contact>* {
   text-align: center;
 }
 
@@ -703,7 +805,8 @@ footer nav ul {
   margin: 40px 0;
 }
 
-.filter__btn, .btn-admin {
+.filter__btn,
+.btn-admin {
   font-family: "Syne";
   padding: 10px 20px;
   margin: 0 15px;
@@ -717,7 +820,8 @@ footer nav ul {
   transition: all 0.5s ease;
 }
 
-.filter__btn--active, .btn-admin {
+.filter__btn--active,
+.btn-admin {
   color: white;
   background-color: #1D6154;
 }
@@ -736,4 +840,5 @@ footer nav ul {
   margin-bottom: 100px;
 }
 
-/* VARIABLES *//*# sourceMappingURL=main.css.map */
+/* VARIABLES */
+/*# sourceMappingURL=main.css.map */

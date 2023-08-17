@@ -1,6 +1,6 @@
-const alredyLoggedError = document.querySelector(".alredyLogged__error"); 
-const loginEmailError = document.querySelector(".loginEmail__error"); 
-const loginMdpError = document.querySelector(".loginMdp__error"); 
+const alredyLoggedError = document.querySelector(".alredyLogged__error");
+const loginEmailError = document.querySelector(".loginEmail__error");
+const loginMdpError = document.querySelector(".loginMdp__error");
 
 const email = document.getElementById("email");
 const password = document.getElementById("password");
@@ -51,33 +51,33 @@ function login(id) {
     }
 
     else {
-    // verification de l'email et du mot de passe
-    fetch('http://localhost:5678/api/users/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-        },
-        body: JSON.stringify(id)
-    })
-    .then(response => response.json())
-    .then(result => { 
-        console.log(result);
-        // Si couple email/mdp incorrect
-        if (result.error || result.message) {
-            const p = document.createElement("p");
-            p.innerHTML = "La combinaison e-mail/mot de passe est incorrecte";
-            loginMdpError.appendChild(p);
+        // verification de l'email et du mot de passe
+        fetch('http://localhost:5678/api/users/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(id)
+        })
+            .then(response => response.json())
+            .then(result => {
+                console.log(result);
+                // Si couple email/mdp incorrect
+                if (result.error || result.message) {
+                    const p = document.createElement("p");
+                    p.innerHTML = "La combinaison e-mail/mot de passe est incorrecte";
+                    loginMdpError.appendChild(p);
 
-        // Si couple email/mdp correct
-        } else if (result.token) {
-            localStorage.setItem("token", result.token);
-            window.location.href = "index.html";
-        }
-    
-    })
-    // prevenir l'utilisateur en cas d'erreur
-    
-    .catch(error => 
-        console.log(error));
-}
+                    // Si couple email/mdp correct
+                } else if (result.token) {
+                    localStorage.setItem("token", result.token);
+                    window.location.href = "index.html";
+                }
+
+            })
+            // prevenir l'utilisateur en cas d'erreur
+
+            .catch(error =>
+                console.log(error));
+    }
 }
