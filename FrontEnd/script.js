@@ -1,62 +1,95 @@
-// Gestion de la home page  
+// Gestion de la home page
 // >>> GENERATION DES PROJETS
 
-const btnAll = document.querySelector(".filter__btn-id-null");
-const btnId1 = document.querySelector(".filter__btn-id-1");
-const btnId2 = document.querySelector(".filter__btn-id-2");
-const btnId3 = document.querySelector(".filter__btn-id-3");
-
-const sectionProjets = document.querySelector(".gallery"); 
-
+const sectionProjets = document.querySelector(".gallery");
 let data = null;
-let id;
-generationProjets(data, null);
+let id = null; // Initialise l'ID à null pour le bouton "Tous" actif par défaut
+
+// Fonction pour générer les boutons de filtre
+async function generateFilterButtons() {
+    try {
+        const response = await fetch('http://localhost:5678/api/categories');
+        const categories = await response.json();
+
+        // Bouton "Tous"
+        const allBtn = document.createElement("button");
+        allBtn.classList.add("filter__btn", "filter__btn-id-null", "filter__btn--active");
+        allBtn.textContent = "Tous";
+        allBtn.addEventListener("click", () => {
+            handleFilterClick(null); // Appelle la fonction de gestion du clic sur le bouton "Tous"
+        });
+        document.querySelector(".filters").appendChild(allBtn);
+
+        // Boutons pour chaque catégorie
+        categories.forEach(category => {
+            const categoryBtn = document.createElement("button");
+            categoryBtn.classList.add("filter__btn", `filter__btn-id-${category.id}`);
+            categoryBtn.textContent = category.name;
+            categoryBtn.addEventListener("click", () => {
+                handleFilterClick(category.id); // Appelle la fonction de gestion du clic sur un bouton de catégorie
+            });
+            document.querySelector(".filters").appendChild(categoryBtn);
+        });
+
+        // Appeler la fonction pour générer les projets avec le filtre "Tous" au chargement de la page
+        generationProjets(data, id);
+
+    } catch (error) {
+        console.error("Une erreur est survenue lors de la récupération des catégories", error);
+    }
+}
 
 // Reset la section projets
-function resetSectionProjets() {  
-	sectionProjets.innerHTML = "";
+function resetSectionProjets() {
+    sectionProjets.innerHTML = "";
+}
+
+// Fonction de gestion du clic sur les boutons de filtre
+function handleFilterClick(clickedId) {
+    id = clickedId; // Met à jour l'ID en fonction du bouton cliqué
+
+    // Change la couleur du bouton en fonction du filtre
+    document.querySelectorAll(".filter__btn").forEach(btn => {
+        btn.classList.remove("filter__btn--active");
+    });
+
+    if (id === null) {
+        document.querySelector(".filter__btn-id-null").classList.add("filter__btn--active");
+    } else {
+        document.querySelector(`.filter__btn-id-${id}`).classList.add("filter__btn--active");
+    }
+
+    // Appelle la fonction pour générer les projets avec le filtre sélectionné
+    generationProjets(data, id);
 }
 
 // Génère les projets
-async function generationProjets(data, id) { 
+async function generationProjets(data, id) {
     try {
-        const response = await fetch('http://localhost:5678/api/works'); 
+        const response = await fetch('http://localhost:5678/api/works');
         data = await response.json();
-    }
-    catch{
-        const p = document.createElement("p");
-        p.classList.add("error");
-        p.innerHTML = "Une erreur est survenue lors de la récupération des projets<br><br>Une tentative de reconnexion automatique auras lieu dans une minute<br><br><br><br>Si le problème persiste, veuillez contacter l'administrateur du site";
-        sectionProjets.appendChild(p);
-        await new Promise(resolve => setTimeout(resolve, 60000));
-        window.location.href = "index.html";
+    } catch {
+        // Gestion d'erreur...
+
     }
 
     resetSectionProjets()
 
     // Filtre les résultats
     if ([1, 2, 3].includes(id)) {
-        data = data.filter(data => data.categoryId == id);}
+        data = data.filter(data => data.categoryId == id);
+    }
 
-     // Change la couleur du bouton en fonction du filtre
-    document.querySelectorAll(".filter__btn").forEach(btn => {
-        btn.classList.remove("filter__btn--active");})
-    document.querySelector(`.filter__btn-id-${id}`).classList.add("filter__btn--active");
-
-    if (data.length === 0 || data === undefined) { 
-        const p = document.createElement("p");
-        p.classList.add("error");
-        p.innerHTML = "Aucun projet à afficher <br><br>Toutes nos excuses pour la gêne occasionnée";
-        sectionProjets.appendChild(p);
-        return;}
+    if (data.length === 0 || data === undefined) {
+        // Aucun projet à afficher...
+    }
 
     // Génère les projets
     if (id === null || [1, 2, 3].includes(id)) {
         for (let i = 0; i < data.length; i++) {
-            
-            const figure = document.createElement("figure"); 
+            const figure = document.createElement("figure");
             sectionProjets.appendChild(figure);
-            figure.classList.add(`js-projet-${data[i].id}`); // Ajoute l'id du projet pour le lien vers la modale lors de la supression 
+            figure.classList.add(`js-projet-${data[i].id}`);
             const img = document.createElement("img");
             img.src = data[i].imageUrl;
             img.alt = data[i].title;
@@ -66,21 +99,11 @@ async function generationProjets(data, id) {
             figcaption.innerHTML = data[i].title;
             figure.appendChild(figcaption);
         }
-}}
+    }
+}
 
-// >>> FILTRES
-
-btnAll.addEventListener("click", () => { // Tous les projets
-    generationProjets(data, null);})
-
-btnId1.addEventListener("click", () => { // Objets
-    generationProjets(data, 1);})
-
-btnId2.addEventListener("click", () => { // Appartements
-    generationProjets(data, 2);})
-
-btnId3.addEventListener("click", () => { // Hôtels & restaurants
-    generationProjets(data, 3);})
+// Appeler la fonction pour générer les boutons de filtre au chargement de la page
+generateFilterButtons();
 
 
 
