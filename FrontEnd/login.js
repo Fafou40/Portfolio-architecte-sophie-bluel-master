@@ -35,7 +35,7 @@ function login(id) {
     console.log(id);
     loginEmailError.innerHTML = "";
     loginMdpError.innerHTML = "";
-    // véeification de l'email
+    // vérification de l'email
     if (!id.email.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$/g)) {
         const p = document.createElement("p");
         p.innerHTML = "Veuillez entrer une addresse mail valide";
@@ -51,7 +51,7 @@ function login(id) {
     }
 
     else {
-        // verification de l'email et du mot de passe
+        // vérification de l'email et du mot de passe
         fetch('http://localhost:5678/api/users/login', {
             method: 'POST',
             headers: {

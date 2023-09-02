@@ -1,4 +1,8 @@
-/* http://meyerweb.com/eric/tools/css/reset/ !!! v2.0 | 20110126 !!! License: none (public domain) */
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
 html,
 body,
 div,
@@ -569,6 +573,17 @@ html {
   animation: fadeIn 0.4s both;
 }
 
+.image-preview-container {
+  max-width: 100%; /* Limite la largeur de l'aperçu à 100% de la largeur du conteneur */
+  max-height: 150px; /* Vous pouvez ajuster la hauteur maximale selon vos besoins */
+  overflow:hidden; /* Masque le contenu débordant de l'aperçu */
+}
+
+.image-preview-container img {
+  width: 100%; /* Remplit la largeur du conteneur */
+  height: auto; /* Ajuste automatiquement la hauteur pour maintenir les proportions de l'image */
+}
+
 .modale-projet-logo {
   display: flex;
   justify-content: space-between;
@@ -688,7 +703,7 @@ html {
   font-size: 90px;
   font-weight: 100;
   margin: 20px;
-  margin-top: -25px;
+  margin-top: 10px;
 }
 
 .form-group-photo input {
@@ -712,7 +727,7 @@ html {
 .form-group-photo::after {
   content: "jpg, png : 4mo max";
   position: absolute;
-  top: 315px;
+  top: 350px;
 }
 
 .form-group-title {
