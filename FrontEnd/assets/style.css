@@ -390,8 +390,8 @@ html {
 }
 
 .modale-projet-form input[type=submit]:hover {
-  color: #1D6154;
-  background-color: white;
+  color:white;
+  background-color:  #1D6154;
   scale: 1.05;
   cursor: pointer;
 }
@@ -575,7 +575,7 @@ html {
 
 .image-preview-container {
   max-width: 100%; /* Limite la largeur de l'aperçu à 100% de la largeur du conteneur */
-  max-height: 150px; /* Vous pouvez ajuster la hauteur maximale selon vos besoins */
+  max-height: 100%; /* Vous pouvez ajuster la hauteur maximale selon vos besoins */
   overflow:hidden; /* Masque le contenu débordant de l'aperçu */
 }
 
@@ -724,10 +724,8 @@ html {
   margin-top: -10px;
 }
 
-.form-group-photo::after {
-  content: "jpg, png : 4mo max";
-  position: absolute;
-  top: 350px;
+.form-group-photo_content {
+  display: block;
 }
 
 .form-group-title {
@@ -768,8 +766,8 @@ html {
   font-family: "Syne";
   font-weight: 700;
   color: white;
-  background-color: #1D6154;
-  border: 2px solid #1D6154;
+  background-color: #A7A7A7;
+  border: 2px solid #A7A7A7;
   margin: 120px 0 30px 0;
   height: 50px;
   width: 250px;

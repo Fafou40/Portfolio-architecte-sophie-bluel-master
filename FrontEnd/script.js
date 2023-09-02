@@ -276,7 +276,11 @@ const backToModale = function (e) {
 const btnAjouterProjet = document.querySelector('.js-add-work');
 btnAjouterProjet.addEventListener('click', addWork);
 
-document.querySelector('.js-image').addEventListener('change', function () {
+const imageInput = document.querySelector('.js-image');
+const imageInputLabel = document.querySelector('.form-group-photo label'); // Sélectionnez l'étiquette
+const imageInputLabelContent = document.querySelector('.form-group-photo_content'); // Sélectionnez ::after
+
+imageInput.addEventListener('change', function () {
   previewImage(this);
 });
 
@@ -288,14 +292,20 @@ function previewImage(input) {
 
     reader.onload = function (e) {
       imagePreviewContainer.innerHTML = '<img src="' + e.target.result + '" alt="Aperçu de l\'image">';
+      imageInputLabel.style.display = 'none'; // Masquer l'étiquette
+      imageInputLabelContent.style.display = 'none'; // Masquer ::after
     }
 
     reader.readAsDataURL(input.files[0]);
   } else {
     // Réinitialiser à l'icône si aucun fichier n'est sélectionné
     imagePreviewContainer.innerHTML = '<i class="fa-regular fa-image"></i>';
+    imageInputLabel.style.display = 'block'; // Réafficher l'étiquette si aucun fichier n'est sélectionné
+    imageInputLabelContent.style.display = 'block'; // Réafficher ::after
   }
 }
+
+
 
 async function addWork(event) {
   event.preventDefault();
